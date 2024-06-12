@@ -31,3 +31,16 @@ body {
     text-wrap: balance;
   }
 }
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 2s forwards;
+}
