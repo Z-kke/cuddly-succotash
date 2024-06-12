@@ -16,7 +16,7 @@ const NavBar: React.FC = () => {
   return (
     <div className="fixed w-full bg-black top-0 z-50">
       <div className="flex justify-between items-center p-4">
-        <Link href="/" passHref>
+        <Link href="/">
           <Image
             src="/vercel.svg"
             alt="Vercel Logo"
@@ -27,12 +27,12 @@ const NavBar: React.FC = () => {
           />
         </Link>
         <div className="hidden md:flex">
-          <Link href="/about" passHref>
+          <Link href="/about">
             <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
               About
             </p>
           </Link>
-          <Link href="/contact" passHref>
+          <Link href="/contact">
             <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
               Contact
             </p>
@@ -63,10 +63,10 @@ const NavBar: React.FC = () => {
           </button>
         </div>
         <div className="flex flex-col items-start p-4">
-          <Link href="/about" passHref>
+          <Link href="/about">
             <p className="text-white text-xl mb-4 cursor-pointer">About</p>
           </Link>
-          <Link href="/contact" passHref>
+          <Link href="/contact">
             <p className="text-white text-xl mb-4 cursor-pointer">Contact</p>
           </Link>
         </div>
