@@ -18,8 +18,8 @@ const NavBar: React.FC = () => {
       <div className="flex justify-between items-center p-4">
         <Link href="/">
           <Image
-            src="/vercel.svg"
-            alt="Vercel Logo"
+            src="/favicon.ico"
+            alt="Home"
             className="dark:invert cursor-pointer"
             width={100}
             height={24}
