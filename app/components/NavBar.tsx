@@ -5,7 +5,10 @@ import React from "react";
 
 const Navbar: React.FC = () => {
   return (
-    <AppBar position="static" sx={{ backgroundColor: "black" }}>
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: "black", top: 0, zIndex: 1100 }}
+    >
       <Toolbar className="flex justify-between">
         <Link href="/" passHref>
           <Image
