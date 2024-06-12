@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
             src="/favicon.ico"
             alt="Home"
             className="dark:invert cursor-pointer"
-            width={100}
+            width={50}
             height={24}
             priority
           />
