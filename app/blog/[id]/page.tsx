@@ -2,7 +2,7 @@ import { getAllPostIds, getPostData } from "@/app/lib/posts";
 
 export async function generateStaticParams() {
   const paths = await getAllPostIds();
-  return paths.map((id) => ({ id }));
+  return paths.map(({ id }) => ({ id: id.toString() }));
 }
 
 export default async function PostPage({ params }: { params: { id: string } }) {
