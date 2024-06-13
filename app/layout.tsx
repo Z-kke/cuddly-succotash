@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppRouterCacheProvider>
           <Navbar />
-          {children}
+          <main className="pt-20">{children}</main>
         </AppRouterCacheProvider>
       </body>
     </html>
