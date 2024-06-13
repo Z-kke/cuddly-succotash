@@ -1,25 +1,18 @@
-import { getAllPostIds, getPostData } from "@/app/lib/posts";
-
-export async function generateStaticParams() {
-  const paths = await getAllPostIds();
-  return paths.map(({ id }) => ({ id }));
+async function fetchPost(id: string) {
+  const res = await fetch(`/api/blog/${id}`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch post");
+  }
+  return res.json();
 }
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
+export default async function PostPage({ params }: { params: { id: string } }) {
+  const post = await fetchPost(params.id);
 
-export default async function PostPage({ params }: Params) {
-  const postData = await getPostData(params.id);
-  if (!postData) {
-    return <div>Post not found</div>;
-  }
   return (
     <div className="prose mx-auto">
-      <h1>{postData.title}</h1>
-      <p>{postData.content}</p>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
     </div>
   );
 }
