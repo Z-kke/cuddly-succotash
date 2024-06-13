@@ -27,6 +27,11 @@ const NavBar: React.FC = () => {
           />
         </Link>
         <div className="hidden md:flex">
+          <Link href="/blog">
+            <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
+              Blog
+            </p>
+          </Link>
           <Link href="/about">
             <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
               About
@@ -63,6 +68,9 @@ const NavBar: React.FC = () => {
           </button>
         </div>
         <div className="flex flex-col items-start p-4">
+          <Link href="/blog">
+            <p className="text-white text-xl mb-4 cursor-pointer">Blog</p>
+          </Link>
           <Link href="/about">
             <p className="text-white text-xl mb-4 cursor-pointer">About</p>
           </Link>
