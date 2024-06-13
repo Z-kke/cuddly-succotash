@@ -20,7 +20,7 @@ export default async function BlogLandingPage() {
   );
 
   return (
-    <div className="prose mx-auto">
+    <div className="prose m-10">
       <h1 className="text-4xl font-bold">Blog</h1>
       <ul>
         {posts.map((post: Post) => (
