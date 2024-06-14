@@ -1,21 +1,29 @@
 import Link from "next/link";
+import { getAllPostIds, getPostData } from "../lib/posts";
 
-async function fetchPosts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/blog`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch posts");
-  }
-  return res.json();
-}
+type Post = {
+  id: string;
+  title: string;
+  content: string;
+};
+
+type PostId = {
+  id: string;
+};
 
 export default async function BlogLandingPage() {
-  const posts = await fetchPosts();
+  const postIds = await getAllPostIds();
+  // Prevent "waterfall loading" with Promise.all
+  // Can cause issues when one of the fetches fails, but not an issue in this demo environment.
+  const posts = await Promise.all(
+    postIds.map((post: PostId) => getPostData(post.id))
+  );
 
   return (
-    <div className="prose mx-auto">
+    <div className="prose m-10">
       <h1 className="text-4xl font-bold">Blog</h1>
       <ul>
-        {posts.map((post: { id: string; title: string; content: string }) => (
+        {posts.map((post: Post) => (
           <li key={post.id} className="mb-4">
             <Link
               href={`/blog/${post.id}`}
@@ -23,13 +31,10 @@ export default async function BlogLandingPage() {
             >
               {post.title}
             </Link>
-            <p>{post.content.substring(0, 100)}...</p>
+            <p>{post.content.substring(0, 100)}...</p>{" "}
           </li>
         ))}
       </ul>
-      <Link href="/blog/add" className="text-blue-600 hover:underline">
-        Add a new post
-      </Link>
     </div>
   );
 }
