@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { lusitana } from "@/app/ui/fonts";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 import "./globals.css";
 import Navbar from "../components/NavBar";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${lusitana.className} antialiased`}>
         <AppRouterCacheProvider>
           <Navbar />
           <main className="pt-20">{children}</main>
