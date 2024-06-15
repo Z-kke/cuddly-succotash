@@ -5,13 +5,27 @@ import Image from "next/image";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+
+type Link = {
+  href: string;
+  name: string;
+};
 
 const NavBar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
+
+  const links: Link[] = [
+    { href: "/blog", name: "Blog" },
+    { href: "/about", name: "About" },
+    { href: "/contact", name: "Contact" },
+  ];
 
   return (
     <div className="fixed w-full bg-black top-0 z-50">
@@ -27,21 +41,23 @@ const NavBar: React.FC = () => {
           />
         </Link>
         <div className="hidden md:flex">
-          <Link href="/blog">
-            <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
-              Blog
-            </p>
-          </Link>
-          <Link href="/about">
-            <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
-              About
-            </p>
-          </Link>
-          <Link href="/contact">
-            <p className="text-white inline-block mr-4 text-2xl font-semibold cursor-pointer">
-              Contact
-            </p>
-          </Link>
+          {links.map((link) => {
+            console.log(link);
+            return (
+              <Link href={link.href} key={link.name}>
+                <p
+                  className={clsx(
+                    "text-white inline-block mr-4 text-2xl font-semibold cursor-pointer",
+                    {
+                      "bg-white text-black": link.href === pathname,
+                    }
+                  )}
+                >
+                  {link.name}
+                </p>
+              </Link>
+            );
+          })}
         </div>
         <div className="md:hidden">
           <button
