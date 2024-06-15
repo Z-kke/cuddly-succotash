@@ -8,7 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-type Link = {
+type NavLink = {
   href: string;
   name: string;
 };
@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
     setDrawerOpen(open);
   };
 
-  const links: Link[] = [
+  const links: NavLink[] = [
     { href: "/blog", name: "Blog" },
     { href: "/about", name: "About" },
     { href: "/contact", name: "Contact" },
