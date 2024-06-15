@@ -1,7 +1,7 @@
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="mt-20">
+    <main className="flex min-h-screen flex-col items-center justify-between p-12">
+      <div>
         <h1 className="text-white text-6xl font-bold transform transition-all duration-1000 ease-in-out -translate-x-full animate-slide-in">
           Landing Page
         </h1>
