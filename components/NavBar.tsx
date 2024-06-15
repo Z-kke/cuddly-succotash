@@ -84,15 +84,19 @@ const NavBar: React.FC = () => {
           </button>
         </div>
         <div className="flex flex-col items-start p-4">
-          <Link href="/blog">
-            <p className="text-white text-xl mb-4 cursor-pointer">Blog</p>
-          </Link>
-          <Link href="/about">
-            <p className="text-white text-xl mb-4 cursor-pointer">About</p>
-          </Link>
-          <Link href="/contact">
-            <p className="text-white text-xl mb-4 cursor-pointer">Contact</p>
-          </Link>
+          {links.map((link) => {
+            return (
+              <Link href={link.href} key={link.name}>
+                <p
+                  className={clsx("text-white text-xl mb-4 cursor-pointer", {
+                    "bg-white text-black": pathname === link.href,
+                  })}
+                >
+                  {link.name}
+                </p>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
